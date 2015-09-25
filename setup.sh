@@ -10,4 +10,8 @@ curl -fLo `pwd`/.vim/autoload/plug.vim --create-dirs \
 ln -s `pwd`/.files/vimrc $HOME/.vimrc
 ln -s `pwd`/.files/vimrc $HOME/.nvimrc
 
-vim -c "set et|PlugInstall|wqa"
+if hash nvim 2>/dev/null; then
+    nvim -c "PlugInstall|wqa"
+else
+    vim -c "PlugInstall|wqa"
+fi
