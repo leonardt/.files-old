@@ -1,7 +1,11 @@
 " Plugins {{{
 call plug#begin('~/.vim/plugged')
 " Completion {{{
-Plug 'Shougo/deoplete.nvim'
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim'
+else
+    Plug 'ervandew/supertab'
+endif
 " }}}
 " General {{{
 Plug 'Raimondi/delimitMate'
@@ -62,8 +66,12 @@ set smartcase
 set cursorline
 set noshowmode
 set hidden
+
+if has('nvim')
+    tnoremap <Esc> <c-\><c-n>
+end
 " }}}
-"
+
 " Save when losing focus
 au FocusLost * :silent! wall
 
@@ -95,27 +103,19 @@ set wildignore+=*.orig                           " Merge resolution files
 
 " }}}
 
+" deoplete {{{
 if has('nvim')
-    tnoremap <Esc> <c-\><c-n>
     let g:deoplete#enable_at_startup = 1
     inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
     inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
     inoremap <expr><BS>
         \ deoplete#mappings#smart_close_popup()."\<C-h>"
 end
+" }}}
+
+" Backups, History, and Undo {{{
 
 set history=1000
-if has('persistent_undo')
-  set undofile
-  set undoreload=10000
-  set undodir=~/.vim/tmp/undo/     " undo files
-  if !isdirectory(expand(&undodir))
-    call mkdir(expand(&undodir), "p")
-  endif
-endif
-
-" Backups {{{
-
 set backup
 set noswapfile
 
@@ -127,6 +127,15 @@ if !isdirectory(expand(&backupdir))
 endif
 if !isdirectory(expand(&directory))
   call mkdir(expand(&directory), "p")
+endif
+
+if has('persistent_undo')
+  set undofile
+  set undoreload=10000
+  set undodir=~/.vim/tmp/undo/     " undo files
+  if !isdirectory(expand(&undodir))
+    call mkdir(expand(&undodir), "p")
+  endif
 endif
 
 " }}}
