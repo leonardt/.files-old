@@ -19,6 +19,7 @@ Plug 'tpope/vim-endwise'
 Plug 'justinmk/vim-sneak'
 " }}}
 " Search {{{
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
 Plug 'thinca/vim-qfreplace'
 Plug 'osyo-manga/vim-over'
@@ -154,3 +155,20 @@ au FileType python let b:delimitMate_nesting_quotes = ['"']
 " }}}
 
 nnoremap <Leader>a :Ag<Space>
+" ctrlp {{{
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+if executable('ag')
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command =
+    \ 'ag %s --files-with-matches -g "" --ignore "\.git$\|\.hg$\|\.svn$"'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+else
+  " Fall back to using git ls-files if Ag is not available
+  let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
+  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
+endif
+" " }}}
