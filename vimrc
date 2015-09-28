@@ -22,9 +22,9 @@ Plug 'justinmk/vim-sneak'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
 Plug 'thinca/vim-qfreplace'
-Plug 'osyo-manga/vim-over'
-Plug 'junegunn/vim-pseudocl'
-Plug 'junegunn/vim-oblique'
+" Plug 'osyo-manga/vim-over'
+" Plug 'junegunn/vim-pseudocl'
+" Plug 'junegunn/vim-oblique'
 " }}}
 " Languages {{{
 Plug 'JuliaLang/julia-vim'
