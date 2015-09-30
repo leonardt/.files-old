@@ -15,3 +15,5 @@ if hash nvim 2>/dev/null; then
 else
     vim -c "PlugInstall|wqa"
 fi
+
+ln -s `pwd`/tmux.conf $HOME/.tmux.conf

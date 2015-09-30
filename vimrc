@@ -18,6 +18,7 @@ Plug 'tpope/vim-endwise'
 " }}}
 " Movement {{{
 Plug 'justinmk/vim-sneak'
+Plug 'christoomey/vim-tmux-navigator'
 " }}}
 " Search {{{
 Plug 'ctrlpvim/ctrlp.vim'
