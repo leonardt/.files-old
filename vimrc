@@ -3,6 +3,7 @@ call plug#begin('~/.vim/plugged')
 " Completion {{{
 if has('nvim')
     Plug 'Shougo/deoplete.nvim'
+    Plug 'Shougo/neco-syntax'
 else
     Plug 'ervandew/supertab'
 endif
@@ -31,20 +32,26 @@ Plug 'JuliaLang/julia-vim'
 " }}}
 " Colorschemes {{{
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'w0ng/vim-hybrid'
 
 Plug 'bling/vim-airline'
 " }}}
 call plug#end()
 " }}}
 " General Settings {{{
-set background=light
-colorscheme PaperColor
-let g:airline_theme = "PaperColor"
+" set background=light
+" colorscheme PaperColor
+" let g:airline_theme = "PaperColor"
+let g:hybrid_use_Xresources = 1
+set background=dark
+colorscheme hybrid
+let g:airline_theme = "hybridline"
 let g:airline_powerline_fonts = 1
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
+" let g:airline_left_sep = ''
+" let g:airline_right_sep = ''
 
 set number
+set relativenumber
 
 set shiftwidth=4
 set softtabstop=4
@@ -107,6 +114,7 @@ set wildignore+=*.orig                           " Merge resolution files
 " deoplete {{{
 if has('nvim')
     let g:deoplete#enable_at_startup = 1
+    let g:deoplete#enable_smart_case = 1
     inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
     inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
     inoremap <expr><BS>
