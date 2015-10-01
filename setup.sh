@@ -17,3 +17,5 @@ else
 fi
 
 ln -s `pwd`/tmux.conf $HOME/.tmux.conf
+ln -s `pwd`/tmux-osx.conf $HOME/.tmux-osx.conf
+ln -s `pwd`/ctags $HOME/.ctags

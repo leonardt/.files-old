@@ -46,10 +46,14 @@ call plug#end()
 let g:hybrid_use_Xresources = 1
 set background=dark
 colorscheme hybrid
-let g:airline_theme = "hybridline"
+hi StatusLine ctermbg=6 ctermfg=16
+hi StatusLineNC ctermbg=6 ctermfg=0
+let g:airline_theme = "monochrome"
 let g:airline_powerline_fonts = 1
-" let g:airline_left_sep = ''
-" let g:airline_right_sep = ''
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+
+let mapleader = "\<Space>"
 
 set number
 set relativenumber
@@ -72,14 +76,36 @@ set incsearch
 set ignorecase
 set smartcase
 
-set cursorline
+augroup CursorLine
+    au!
+    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+    au WinLeave * setlocal nocursorline
+augroup END
 set noshowmode
 set hidden
 
+set listchars=tab:▸\ ,extends:❯,precedes:❮,trail:·
+set fcs=vert:│
+
 if has('nvim')
     tnoremap <Esc> <c-\><c-n>
+elseif exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"j
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 end
 " }}}
+
+" Return to line when reopening file
+augroup line_return
+    au!
+    au BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \     execute 'normal! g`"zvzz' |
+        \ endif
+augroup END
 
 " Save when losing focus
 au FocusLost * :silent! wall
@@ -120,6 +146,9 @@ if has('nvim')
     inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
     inoremap <expr><BS>
         \ deoplete#mappings#smart_close_popup()."\<C-h>"
+    set completeopt+=noselect
+    let g:deoplete#omni_patterns = {}
+    let g:deoplete#omni_patterns.julia = '\\\w*'
 end
 " }}}
 
@@ -168,6 +197,7 @@ nnoremap <Leader>a :Ag<Space>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
+nnoremap <leader>t :CtrlPTag<CR>
 if executable('ag')
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command =
