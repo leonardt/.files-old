@@ -22,3 +22,5 @@ ln -s `pwd`/ctags $HOME/.ctags
 
 git clone --depth 1 https://github.com/junegunn/fzf.git `pwd`/.fzf
 `pwd`/.fzf/install
+
+git clone https://github.com/tarjoilija/zgen.git `pwd`/zgen
