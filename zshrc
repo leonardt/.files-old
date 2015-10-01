@@ -28,6 +28,8 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+export PATH="$HOME/.files/bin:$PATH"
+
 # Completion
 autoload -Uz compinit
 compinit

@@ -193,7 +193,7 @@ let delimitMate_expand_cr = 1
 au FileType python let b:delimitMate_nesting_quotes = ['"']
 " }}}
 
-nnoremap <Leader>a :Ag<Space>
+nnoremap <Leader>a :Ack<Space>
 " ctrlp {{{
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'

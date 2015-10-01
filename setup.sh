@@ -24,3 +24,5 @@ git clone --depth 1 https://github.com/junegunn/fzf.git `pwd`/.fzf
 `pwd`/.fzf/install
 
 git clone https://github.com/tarjoilija/zgen.git `pwd`/zgen
+
+curl http://beyondgrep.com/ack-2.14-single-file > `pwd`/bin/ack && chmod 0755 `pwd`/bin/ack
