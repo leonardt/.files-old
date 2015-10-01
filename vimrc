@@ -31,9 +31,10 @@ Plug 'thinca/vim-qfreplace'
 " Languages {{{
 Plug 'JuliaLang/julia-vim'
 " }}}
-" Colorschemes {{{
+" UI {{{
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'w0ng/vim-hybrid'
+Plug 'junegunn/goyo.vim'
 
 Plug 'bling/vim-airline'
 " }}}
@@ -55,8 +56,8 @@ let g:airline_right_sep = ''
 
 let mapleader = "\<Space>"
 
-set number
-set relativenumber
+" set number
+" set relativenumber
 
 set shiftwidth=4
 set softtabstop=4
