@@ -35,6 +35,7 @@ Plug 'JuliaLang/julia-vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'w0ng/vim-hybrid'
 Plug 'junegunn/goyo.vim'
+Plug 'morhetz/gruvbox'
 
 Plug 'bling/vim-airline'
 " }}}
@@ -46,13 +47,15 @@ call plug#end()
 " let g:airline_theme = "PaperColor"
 let g:hybrid_use_Xresources = 1
 set background=dark
-colorscheme hybrid
-hi StatusLine ctermbg=6 ctermfg=16
-hi StatusLineNC ctermbg=6 ctermfg=0
-let g:airline_theme = "monochrome"
+" colorscheme hybrid
+" hi StatusLine ctermbg=6 ctermfg=16
+" hi StatusLineNC ctermbg=6 ctermfg=0
+" let g:airline_theme = "monochrome"
+colorscheme gruvbox
+let g:airline_theme = "gruvbox"
 let g:airline_powerline_fonts = 1
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
+" let g:airline_left_sep = ''
+" let g:airline_right_sep = ''
 
 let mapleader = "\<Space>"
 
@@ -91,7 +94,7 @@ set fcs=vert:│
 if has('nvim')
     tnoremap <Esc> <c-\><c-n>
 elseif exists('$TMUX')
-    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"j
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
     let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 else
     let &t_SI = "\<Esc>]50;CursorShape=1\x7"
@@ -118,7 +121,7 @@ fun! StripTrailingWhiteSpace()
   endif
   %s/\s\+$//e
 endfun
-autocmd bufwritepre * :call StripTrailingWhiteSpace()
+" autocmd bufwritepre * :call StripTrailingWhiteSpace()
 
 " Wildmenu completion {{{
 

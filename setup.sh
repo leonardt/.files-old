@@ -20,6 +20,8 @@ ln -s `pwd`/tmux.conf $HOME/.tmux.conf
 ln -s `pwd`/tmux-osx.conf $HOME/.tmux-osx.conf
 ln -s `pwd`/ctags $HOME/.ctags
 
+ln -s `pwd`/zshrc $HOME/.zshrc
+
 git clone --depth 1 https://github.com/junegunn/fzf.git `pwd`/.fzf
 `pwd`/.fzf/install
 
