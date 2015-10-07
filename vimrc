@@ -35,6 +35,7 @@ Plug 'JuliaLang/julia-vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'w0ng/vim-hybrid'
 Plug 'junegunn/goyo.vim'
+Plug 'morhetz/gruvbox'
 
 Plug 'bling/vim-airline'
 " }}}
@@ -46,13 +47,15 @@ call plug#end()
 " let g:airline_theme = "PaperColor"
 let g:hybrid_use_Xresources = 1
 set background=dark
-colorscheme hybrid
-hi StatusLine ctermbg=6 ctermfg=16
-hi StatusLineNC ctermbg=6 ctermfg=0
-let g:airline_theme = "monochrome"
+" colorscheme hybrid
+" hi StatusLine ctermbg=6 ctermfg=16
+" hi StatusLineNC ctermbg=6 ctermfg=0
+" let g:airline_theme = "monochrome"
+colorscheme gruvbox
+let g:airline_theme = "gruvbox"
 let g:airline_powerline_fonts = 1
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
+" let g:airline_left_sep = ''
+" let g:airline_right_sep = ''
 
 let mapleader = "\<Space>"
 

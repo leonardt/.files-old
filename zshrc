@@ -53,7 +53,7 @@ alias ga='git add'
 
 
 export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-# export NVIM_TUI_ENABLE_TRUE_COLOR=1
+export NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 [ -f $HOME/.zshrc.ext ] && source ~/.zshrc.ext
 # if [[ $(uname -s) == 'Darwin' ]]; then
