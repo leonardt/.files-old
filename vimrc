@@ -38,6 +38,7 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'w0ng/vim-hybrid'
 Plug 'junegunn/goyo.vim'
 Plug 'morhetz/gruvbox'
+Plug 'chriskempson/base16-vim'
 
 Plug 'bling/vim-airline'
 " }}}
@@ -53,8 +54,9 @@ set background=dark
 " hi StatusLine ctermbg=6 ctermfg=16
 " hi StatusLineNC ctermbg=6 ctermfg=0
 " let g:airline_theme = "monochrome"
-colorscheme gruvbox
-let g:airline_theme = "gruvbox"
+" let base16colorspace=256
+colorscheme base16-default
+let g:airline_theme = "base16"
 let g:airline_powerline_fonts = 1
 " let g:airline_left_sep = ''
 " let g:airline_right_sep = ''
