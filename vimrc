@@ -9,6 +9,8 @@ else
 endif
 " }}}
 " General {{{
+Plug 'szw/vim-ctrlspace'
+
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
@@ -197,6 +199,7 @@ au FileType python let b:delimitMate_nesting_quotes = ['"']
 " }}}
 
 nnoremap <Leader>a :Ack<Space>
+
 " ctrlp {{{
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -209,9 +212,17 @@ if executable('ag')
 
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
-else
-  " Fall back to using git ls-files if Ag is not available
-  let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
-  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
+elseif executable('ack')
+  let g:ctrlp_user_command =
+    \ 'ack %s -f --follow --nofilter'
+  let g:ctrlp_use_caching = 0
+" else
+"   " Fall back to using git ls-files if Ag is not available
+"   let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
+"   let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
 endif
 " " }}}
+
+let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
+let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
+let g:CtrlSpaceSaveWorkspaceOnExit = 1
