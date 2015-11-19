@@ -26,9 +26,11 @@ else
   alias ls='ls --color'
 fi
 
+export FZF_TMUX=0
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export PATH="$HOME/.files/bin:$PATH"
+export PATH="$HOME/.cask/bin:$PATH"
 
 # Completion
 autoload -Uz compinit

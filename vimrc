@@ -1,12 +1,12 @@
 " Plugins {{{
 call plug#begin('~/.vim/plugged')
 " Completion {{{
-if has('nvim')
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'Shougo/neco-syntax'
-else
+" if has('nvim')
+"     Plug 'Shougo/deoplete.nvim'
+"     Plug 'Shougo/neco-syntax'
+" else
     Plug 'ervandew/supertab'
-endif
+" endif
 " }}}
 " General {{{
 Plug 'szw/vim-ctrlspace'
@@ -17,6 +17,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
+Plug 'junegunn/vim-easy-align'
 " }}}
 " Movement {{{
 Plug 'justinmk/vim-sneak'
@@ -32,6 +33,8 @@ Plug 'thinca/vim-qfreplace'
 " }}}
 " Languages {{{
 Plug 'JuliaLang/julia-vim'
+Plug 'benekastah/neomake'
+Plug 'zyedidia/julialint.vim'
 " }}}
 " UI {{{
 Plug 'NLKNguyen/papercolor-theme'
@@ -39,6 +42,7 @@ Plug 'w0ng/vim-hybrid'
 Plug 'junegunn/goyo.vim'
 Plug 'morhetz/gruvbox'
 Plug 'chriskempson/base16-vim'
+Plug 'whatyouhide/vim-gotham'
 
 Plug 'bling/vim-airline'
 " }}}
@@ -49,21 +53,41 @@ call plug#end()
 " colorscheme PaperColor
 " let g:airline_theme = "PaperColor"
 let g:hybrid_use_Xresources = 1
-set background=dark
+" set background=dark
 " colorscheme hybrid
+" let g:airline_theme = "hybridline"
 " hi StatusLine ctermbg=6 ctermfg=16
 " hi StatusLineNC ctermbg=6 ctermfg=0
 " let g:airline_theme = "monochrome"
 " let base16colorspace=256
-colorscheme base16-default
-let g:airline_theme = "base16"
+"
+fun! LoadGruvboxDark()
+    set background=dark
+    colorscheme gruvbox
+    let g:airline_theme = "gruvbox"
+endfun
+
+fun! LoadPaperColor()
+    set background=light
+    colorscheme PaperColor
+    let g:airline_theme = "PaperColor"
+endfun
+
+fun! LoadGotham()
+    set background=dark
+    colorscheme gotham
+    let g:airline_theme = "gotham"
+endfun
+
+" call LoadGruvboxDark()
+call LoadGotham()
 let g:airline_powerline_fonts = 1
 " let g:airline_left_sep = ''
 " let g:airline_right_sep = ''
 
 let mapleader = "\<Space>"
 
-" set number
+set number
 " set relativenumber
 
 set shiftwidth=4
@@ -89,6 +113,7 @@ augroup CursorLine
     au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
     au WinLeave * setlocal nocursorline
 augroup END
+
 set noshowmode
 set hidden
 
@@ -106,6 +131,8 @@ else
 end
 " }}}
 
+autocmd FileType julia setlocal commentstring=#\ %s
+autocmd FileType c,cpp setlocal commentstring=//\ %s
 " Return to line when reopening file
 augroup line_return
     au!
@@ -146,18 +173,21 @@ set wildignore+=*.orig                           " Merge resolution files
 
 " }}}
 
+" let g:latex_to_unicode_tab = 0
+" let g:latex_to_unicode_auto = 1
+
 " deoplete {{{
-if has('nvim')
-    let g:deoplete#enable_at_startup = 1
-    let g:deoplete#enable_smart_case = 1
-    inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
-    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-    inoremap <expr><BS>
-        \ deoplete#mappings#smart_close_popup()."\<C-h>"
-    set completeopt+=noselect
-    let g:deoplete#omni_patterns = {}
-    let g:deoplete#omni_patterns.julia = '\\\w*'
-end
+" if has('nvim')
+"     let g:deoplete#enable_at_startup = 1
+"     let g:deoplete#enable_smart_case = 1
+"     inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
+"     inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+"     inoremap <expr><BS>
+"         \ deoplete#mappings#smart_close_popup()."\<C-h>"
+"     set completeopt+=noselect
+"     " let g:deoplete#omni_patterns = {}
+"     " let g:deoplete#omni_patterns.julia = '\\\w*'
+" end
 " }}}
 
 " Backups, History, and Undo {{{
@@ -228,3 +258,6 @@ endif
 let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
 let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
 let g:CtrlSpaceSaveWorkspaceOnExit = 1
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
