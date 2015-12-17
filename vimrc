@@ -80,7 +80,8 @@ fun! LoadGotham()
 endfun
 
 " call LoadGruvboxDark()
-call LoadGotham()
+" call LoadGotham()
+call LoadPaperColor()
 let g:airline_powerline_fonts = 1
 " let g:airline_left_sep = ''
 " let g:airline_right_sep = ''
