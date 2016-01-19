@@ -52,7 +52,6 @@ call plug#end()
 " set background=light
 " colorscheme PaperColor
 " let g:airline_theme = "PaperColor"
-let g:hybrid_use_Xresources = 1
 " set background=dark
 " colorscheme hybrid
 " let g:airline_theme = "hybridline"
@@ -79,8 +78,12 @@ fun! LoadGotham()
     let g:airline_theme = "gotham"
 endfun
 
-" call LoadGruvboxDark()
-call LoadGotham()
+call LoadGruvboxDark()
+" call LoadGotham()
+" set background=dark
+" let g:hybrid_use_Xresources = 1
+" colorscheme hybrid
+" let g:airline_theme = "hybridline"
 let g:airline_powerline_fonts = 1
 " let g:airline_left_sep = ''
 " let g:airline_right_sep = ''
