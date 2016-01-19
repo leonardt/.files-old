@@ -35,6 +35,7 @@ Plug 'thinca/vim-qfreplace'
 Plug 'JuliaLang/julia-vim'
 Plug 'benekastah/neomake'
 Plug 'zyedidia/julialint.vim'
+Plug 'LaTeX-Box-Team/LaTeX-Box'
 " }}}
 " UI {{{
 Plug 'NLKNguyen/papercolor-theme'
@@ -80,10 +81,7 @@ endfun
 
 call LoadGruvboxDark()
 " call LoadGotham()
-" set background=dark
-" let g:hybrid_use_Xresources = 1
-" colorscheme hybrid
-" let g:airline_theme = "hybridline"
+" call LoadPaperColor()
 let g:airline_powerline_fonts = 1
 " let g:airline_left_sep = ''
 " let g:airline_right_sep = ''
