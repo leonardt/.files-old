@@ -22,6 +22,7 @@ call plug#end()
 set background=dark
 let g:hybrid_custom_term_colors = 1
 colorscheme gruvbox
+hi Normal ctermbg=None
 " let g:lightline = { 'colorscheme': 'hybrid' }
 let g:airline_theme = 'gruvbox'
 let g:airline_powerline_fonts = 1
