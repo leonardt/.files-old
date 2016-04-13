@@ -14,17 +14,18 @@ Plug 'whatyouhide/vim-gotham'
 Plug 'chriskempson/base16-vim'
 Plug 'w0ng/vim-hybrid'
 Plug 'morhetz/gruvbox'
+Plug 'NLKNguyen/papercolor-theme'
 " Plug 'itchyny/lightline.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
-set background=dark
+" set background=dark
 let g:hybrid_custom_term_colors = 1
-colorscheme hybrid
+colorscheme PaperColor
 " hi Normal ctermbg=None
 " let g:lightline = { 'colorscheme': 'hybrid' }
-let g:airline_theme = 'hybridline'
+let g:airline_theme = 'PaperColor'
 let g:airline_powerline_fonts = 1
 set laststatus=2
 
