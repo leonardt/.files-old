@@ -20,14 +20,17 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
-" set background=dark
+set background=dark
 let g:hybrid_custom_term_colors = 1
-colorscheme PaperColor
+colorscheme hybrid
+let g:airline_theme = 'hybridline'
+" colorscheme PaperColor
+" let g:airline_theme = 'PaperColor'
 " hi Normal ctermbg=None
 " let g:lightline = { 'colorscheme': 'hybrid' }
-let g:airline_theme = 'PaperColor'
 let g:airline_powerline_fonts = 1
 set laststatus=2
+set number
 
 set shiftwidth=4
 set softtabstop=4
